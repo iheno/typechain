@@ -27,6 +27,7 @@ const createNewBlock = (data) => {
     const newTimestamp = getNewTimeStamp();
     const newHash = Block.calculateBlockHash(newIndex, previousBlock.hash, newTimestamp, data);
     const newBlock = new Block(newIndex, newHash, previousBlock.hash, data, newTimestamp);
+    addBlock(newBlock);
     return newBlock;
 };
 // console.log(createNewBlock("hello"));
@@ -39,7 +40,7 @@ const isBlockVaild = (candidateBlock, previousBlock) => {
     else if (previousBlock.index + 1 !== candidateBlock.index) {
         return false;
     }
-    else if (previousBlock.hash !== candidateBlock.hash) {
+    else if (previousBlock.hash !== candidateBlock.previousHash) {
         return false;
     }
     else if (getHashforBlock(candidateBlock) !== candidateBlock.hash) {
@@ -54,4 +55,8 @@ const addBlock = (candidateBlock) => {
         blockchain.push(candidateBlock);
     }
 };
+createNewBlock("second block");
+createNewBlock("third block");
+createNewBlock("fourth block");
+console.log(blockchain);
 //# sourceMappingURL=index.js.map
