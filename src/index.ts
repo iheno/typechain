@@ -1,4 +1,4 @@
-import * as CryptoJS from "crypto-js";
+import * as CryptoJS from 'crypto-js';
 
 class Block {
   static calculateBlockHash = (
@@ -10,11 +10,11 @@ class Block {
     CryptoJS.SHA256(index + previousHash + timestamp + data).toString();
 
   static validateStructure = (aBlock: Block): boolean =>
-    typeof aBlock.index === "number" &&
-    typeof aBlock.hash === "string" &&
-    typeof aBlock.previousHash === "string" &&
-    typeof aBlock.timestamp === "number" &&
-    typeof aBlock.data === "string";
+    typeof aBlock.index === 'number' &&
+    typeof aBlock.hash === 'string' &&
+    typeof aBlock.previousHash === 'string' &&
+    typeof aBlock.timestamp === 'number' &&
+    typeof aBlock.data === 'string';
 
   public index: number;
   public hash: string;
@@ -37,7 +37,7 @@ class Block {
   }
 }
 
-const genesisBlock: Block = new Block(0, "2020202020202", "", "Hello", 123456);
+const genesisBlock: Block = new Block(0, '2020202020202', '', 'Hello', 123456);
 
 let blockchain: Block[] = [genesisBlock];
 
@@ -99,9 +99,9 @@ const addBlock = (candidateBlock: Block): void => {
   }
 };
 
-createNewBlock("second block");
-createNewBlock("third block");
-createNewBlock("fourth block");
+createNewBlock('second block');
+createNewBlock('third block');
+createNewBlock('fourth block');
 
 console.log(blockchain);
 
